@@ -34,5 +34,5 @@ output/
 Thumbs.db
 Desktop.ini
 
-# === VS Code 用户个人配置（保留工作区级配置） ===
-.vscode/settings.json
+# === VS Code 工作区配置 ===
+.vscode/
