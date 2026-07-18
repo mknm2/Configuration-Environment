@@ -1,176 +1,92 @@
 {
-    // ========== 编译工具 ==========
+    // ========== 编译工具配置 ==========
     "latex-workshop.latex.tools": [
-
         {
-            "name": "xelatex",
+            "name": "latexmk-xelatex",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk-pdflatex",
+            "command": "latexmk",
+            "args": [
+                "-pdf",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "latexmk-lualatex",
+            "command": "latexmk",
+            "args": [
+                "-lualatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "xelatex-shell-escape",
             "command": "xelatex",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "%DOCFILE%"
-            ]
-        },
-
-        {
-            "name": "pdflatex",
-            "command": "pdflatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOCFILE%"
-            ]
-        },
-
-        {
-            "name": "lualatex",
-            "command": "lualatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOCFILE%"
-            ]
-        },
-
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ]
-        },
-
-        {
-            "name": "biber",
-            "command": "biber",
-            "args": [
+                "-shell-escape",
                 "%DOCFILE%"
             ]
         }
-
     ],
 
-    // ========== 编译链（食谱） ==========
+    // ========== 编译链（Recipes） ==========
     "latex-workshop.latex.recipes": [
-
         {
-            "name": "▶ XeLaTeX（单次编译）",
-            "tools": [
-                "xelatex"
-            ]
+            "name": "▶ 1. 智能全自动 (XeLaTeX - 日常/中文推荐)",
+            "tools": ["latexmk-xelatex"]
         },
-
         {
-            "name": "▶ XeLaTeX + Biber（完整编译）",
-            "tools": [
-                "xelatex",
-                "biber",
-                "xelatex",
-                "xelatex"
-            ]
+            "name": "▶ 2. 智能全自动 (PdfLaTeX - 期刊会议模板)",
+            "tools": ["latexmk-pdflatex"]
         },
-
         {
-            "name": "▶ XeLaTeX + BibTeX（完整编译）",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
-            ]
+            "name": "▶ 3. 智能全自动 (LuaLaTeX - 复杂字体/多语言)",
+            "tools": ["latexmk-lualatex"]
         },
-
         {
-            "name": "▶ PdfLaTeX（单次编译）",
-            "tools": [
-                "pdflatex"
-            ]
-        },
-
-        {
-            "name": "▶ PdfLaTeX + BibTeX（完整编译）",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
-            ]
-        },
-
-        {
-            "name": "▶ LuaLaTeX + Biber（完整编译）",
-            "tools": [
-                "lualatex",
-                "biber",
-                "lualatex",
-                "lualatex"
-            ]
+            "name": "▶ 4. 特殊编译 (XeLaTeX + minted 代码高亮)",
+            "tools": ["xelatex-shell-escape"]
         }
-
     ],
 
-    // ========== 清理文件类型 ==========
+    // ========== 清理辅助文件（避开了 synctex.gz） ==========
     "latex-workshop.latex.clean.fileTypes": [
-        "*.aux",
-        "*.bbl",
-        "*.blg",
-        "*.idx",
-        "*.ind",
-        "*.lof",
-        "*.lot",
-        "*.out",
-        "*.toc",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo",
-        "*.gls",
-        "*.ist",
-        "*.fls",
-        "*.log",
-        "*.fdb_latexmk",
-        "*.synctex.gz",
-        "*.synctex(busy)",
-        "*.run.xml",
-        "*.bcf",
-        "*.nav",
-        "*.snm",
-        "*.vrb",
-        "*.pyg"
+        "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", 
+        "*.out", "*.toc", "*.acn", "*.acr", "*.alg", "*.glg", "*.glo", 
+        "*.gls", "*.ist", "*.fls", "*.log", "*.fdb_latexmk",
+        "*.run.xml", "*.bcf", "*.nav", "*.snm", "*.vrb", "*.pyg"
     ],
 
-    // ========== PDF 查看器 ==========
-    // 可选值: "none" | "browser" | "tab" | "external"
-    "latex-workshop.view.pdf.viewer": "tab",
+    // ========== 编译与清理行为 ==========
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.recipe.default": "first", // 固定使用第一个食谱（XeLaTeX智能编译）
+    "latex-workshop.latex.autoBuild.run": "onSave", // 依然建议保存时才触发，保护电脑性能
 
-    // 反向同步：双击 PDF 跳转到源码（可选 "ctrl-click" | "double-click"）
+    // ========== 视图与反向定位 ==========
+    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
 
-    // ========== 编译行为 ==========
-    // 保存文件时自动编译
-    "latex-workshop.latex.autoBuild.run": "onFileChange",
-
-    // 默认编译链（上次使用的）
-    "latex-workshop.latex.recipe.default": "lastUsed",
-
-    // 自动清理：编译成功后自动删除辅助文件
-    "latex-workshop.latex.autoClean.run": "onBuilt",
-
-    // ========== 提示与补全 ==========
-    // 显示编译错误
+    // ========== 错误提示与补全 ==========
     "latex-workshop.message.error.show": true,
-
-    // 显示编译警告
     "latex-workshop.message.warning.show": true,
-
-    // 右键菜单：（1）编译文件；（2）定位游标
     "latex-workshop.showContextMenu": true,
-
-    // 根据使用的宏包自动补全命令和环境
     "latex-workshop.intellisense.package.enabled": true
-
 }
