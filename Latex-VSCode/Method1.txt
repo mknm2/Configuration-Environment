@@ -1,0 +1,15 @@
+==========下载texlive==========
+打开https://www.tug.org/texlive/
+点击 on DVD->downloading the ISO image and burning your own DVD->download from a nearby CTAN mirror->texlive20xx.iso(版本会随年份更新)，开始下载
+或通过清华镜像源下载：https://mirrors.tuna.tsinghua.edu.cn/
+点击 获取下载链接->应用软件->Tex排版系统->texlive20xx，开始下载
+==========安装==========
+下载后解压(路径不能有中文)，右击install-tl-windows(批处理文件)以管理员身份运行，若报错，右击texlive20xx光盘映像文件装载，装载后在此电脑打开，右击install-tl-windows(批处理文件)以管理员身份运行
+修改下载路径，可勾选给所有用户安装，点击advance可进行其他设置，设置完成后安装
+安装完成后可在Windows终端输入tex -v来检查，输出版本号则成功
+==========配置VS Code==========
+在vscode下载LaTeX Workshop扩展，随便打开一个.tex文件(本文件夹给了一个1.tex)，左侧出现TEX扩展图标，点击图标，按F1，点击“首选项：打开工作区设置(JSON)/Preferences: Open Workspace Settings(JSON)”，会打开一个settings.json，将本文件夹中114514.json文件的内容并复制黏贴(覆盖即可)到settings.json并保存
+==========使用方法==========
+打开tex文件，点击Build LaTeX project，再点击View LaTeX PDF，可在右边看到PDF预览
+==========可能的问题==========
+若出错，可能是因为没添加环境变量，复制texlive/202xx/bin/(win32？)文件夹的路径，设置->关于->高级系统设置->高级->环境变量->系统变量->Path->新建，然后将bin/的路径粘贴

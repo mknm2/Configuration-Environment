@@ -1,5 +1,0 @@
-打开 https://www.msys2.org/
-点击下载 msys2-x86_64-xxxx.exe 
-
-方案二
-https://sourceforge.net/projects/mingw-w64/

@@ -1,8 +1,8 @@
-查看有哪些虚拟环境conda env list
-激活虚拟环境conda activate myenv
-列出某环境有哪些库conda list
-安装库conda install numpy pandas matplotlib
-创建环境conda create -n newenv python=3.11
-删除环境conda env remove -n myenv
-查看py版本python --version
-vscode选环境：ctrl+shift+p然后python:select interpreter
+查看有哪些虚拟环境  conda env list
+激活虚拟环境        conda activate myenv
+列出某环境有哪些库  conda list
+安装库              conda install numpy pandas matplotlib
+创建环境            conda create -n newenv python=3.11
+删除环境            conda env remove -n myenv
+查看py版本          python --version
+vscode选环境        ctrl+shift+p然后python:select interpreter
