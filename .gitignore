@@ -1,0 +1,38 @@
+# === 编译产物 ===
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+output/
+
+# === LaTeX 辅助文件 ===
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ind
+*.lof
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.fls
+*.log
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+
+# === Windows 系统文件 ===
+Thumbs.db
+Desktop.ini
+
+# === VS Code 用户个人配置（保留工作区级配置） ===
+.vscode/settings.json
