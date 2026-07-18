@@ -1,4 +1,176 @@
-\documentclass{article}
+% ============================================================
+% LaTeX 环境测试文档
+% 编译：XeLaTeX（推荐） / PdfLaTeX / LuaLaTeX
+% 引用：Biber（推荐） / BibTeX
+% 如果这份文档能编译通过，说明你的 LaTeX 环境配置成功
+% ============================================================
+
+\documentclass[a4paper,12pt]{ctexart}  % ctexart 原生支持中文，免去手动配字体
+
+% ==== 数学 ====
+\usepackage{amsmath, amssymb}
+
+% ==== 图形与颜色 ====
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% ==== 超链接 ====
+\usepackage[hidelinks]{hyperref}
+
+% ==== 代码块 ====
+\usepackage{listings}
+\lstset{
+    basicstyle = \ttfamily\small,
+    keywordstyle = \bfseries\color{blue},
+    commentstyle = \color{gray},
+    numbers = left,
+    numberstyle = \tiny,
+    frame = single,
+    breaklines = true,
+    showstringspaces = false
+}
+
+% ==== 参考文献（BibLaTeX + Biber 推荐）====
+\usepackage[backend=biber, style=gb7714-2015]{biblatex}  % GB/T 7714 国标格式
+\addbibresource{ref.bib}  % 如果还没有 ref.bib，编译时会跳过
+
+% ============================================================
+
+\title{\textbf{LaTeX 环境测试文档}}
+\author{你的名字}
+\date{\today}
+
 \begin{document}
-Hello, \LaTeX!
+
+\maketitle           % 标题
+\tableofcontents     % 目录
+\newpage
+
+% ============================================================
+\section{概述}
+% ============================================================
+
+如果你能看到这行中文，说明 \textbf{XeLaTeX}（或 LuaLaTeX）编译器和 \texttt{ctex} 宏包已经正常工作。
+
+这份文档同时演示了以下功能：
+\begin{itemize}
+    \item 中英文混排、字体样式（\textbf{粗体}、\textit{斜体}、\texttt{等宽}）
+    \item 数学公式（行内与行间）
+    \item 图片插入
+    \item 表格
+    \item 代码块
+    \item 交叉引用
+    \item 参考文献引用
+    \item 超链接
+\end{itemize}
+
+% ============================================================
+\section{数学公式}
+\label{sec:math}
+% ============================================================
+
+\subsection{行内与行间公式}
+
+勾股定理：$a^2 + b^2 = c^2$，其中 $a$ 和 $b$ 是直角边，$c$ 是斜边。
+
+欧拉公式（行为公式，无编号）：
+\[
+    e^{i\pi} + 1 = 0
+\]
+
+欧拉公式（带编号，方便引用）：
+\begin{equation}
+    e^{i\theta} = \cos\theta + i\sin\theta
+    \label{eq:euler}
+\end{equation}
+
+如公式~\ref{eq:euler} 所示，欧拉恒等式是数学中最优美的等式之一。
+
+\subsection{矩阵}
+
+\begin{equation}
+    A = \begin{bmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{bmatrix}
+    \label{eq:matrix}
+\end{equation}
+
+\subsection{多行公式}
+
+\begin{align}
+    \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
+    \nabla \cdot \mathbf{B} &= 0 \\
+    \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+    \nabla \times \mathbf{B} &= \mu_0 \left( \mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right)
+\end{align}
+
+% ============================================================
+\section{表格}
+\label{sec:table}
+% ============================================================
+
+表~\ref{tab:env} 汇总了各编译引擎的适用场景。
+
+\begin{table}[h]
+    \centering
+    \caption{LaTeX 编译引擎对比}
+    \label{tab:env}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{引擎} & \textbf{中文支持} & \textbf{字体系统} & \textbf{推荐场景} \\
+        \hline
+        PdfLaTeX    & 需 CJK 宏包      & Type1 / 位图   & 传统英文期刊 \\
+        XeLaTeX     & 原生支持         & 系统字体        & 日常 / 中文学位论文 \\
+        LuaLaTeX    & 原生支持         & 系统字体        & 复杂字体 / 多语言 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+% ============================================================
+\section{代码块}
+\label{sec:code}
+% ============================================================
+
+下面是一段 C 语言的「Hello, World」示例：
+
+\begin{lstlisting}[language=C, caption={Hello World in C}]
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+\end{lstlisting}
+
+% ============================================================
+\section{参考文献}
+\label{sec:ref}
+% ============================================================
+
+BibLaTeX + Biber 是现代 LaTeX 推荐的参考文献方案。
+
+若你有 \texttt{ref.bib} 文件，可以这样引用：在文献库~\cite{example} 中……
+
+如果还没有 \texttt{.bib} 文件也无妨——编译时会显示警告，不影响 PDF 输出。
+
+% 打印参考文献（无 .bib 文件也不会报错，只是显示为空）
+\printbibliography
+
+% ============================================================
+\section{下一步}
+\label{sec:next}
+% ============================================================
+
+\begin{enumerate}
+    \item 学习宏包管理：遇到排版需求时，搜索「需求名 + LaTeX 宏包」
+    \item 建立自己的 \texttt{.bib} 文献库，用 Zotero / JabRef 管理
+    \item 了解 Ti\textit{k}Z / PGFPlots 用于制图和数据可视化
+    \item 需要模板时，去 \href{https://www.overleaf.com/latex/templates}{Overleaf Templates} 查找
+\end{enumerate}
+
+以上所有内容编译通过，你的 LaTeX 环境就完全就绪了。
+
 \end{document}
