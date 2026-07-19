@@ -20,7 +20,7 @@ Latex-VSCode\10.png
 Latex-VSCode\12.png
 可在Windows终端输入tex -v来检查，输出版本号则成功
 ==========配置VS Code==========
-在vscode下载LaTeX Workshop扩展，随便打开一个.tex文件(本文件夹给了一个1.tex)，左侧出现TEX扩展图标，点击图标，按F1，点击“首选项：打开工作区设置(JSON)/Preferences: Open Workspace Settings(JSON)”，会打开一个settings.json，将本文件夹中114514.json文件的内容并复制黏贴(覆盖即可)到settings.json并保存，重启VSCode
+在vscode下载LaTeX Workshop扩展，随便打开一个.tex文件(本文件夹给了一个114514.tex)，左侧出现TEX扩展图标，点击图标，按F1，点击“首选项：打开工作区设置(JSON)/Preferences: Open Workspace Settings(JSON)”，会打开一个settings.json，将本文件夹中114514.json文件的内容并复制黏贴(覆盖即可)到settings.json并保存，重启VSCode
 ==========使用方法==========
 打开tex文件，在Build LaTeX project中选择编译方式并点击，再在View LaTeX PDF中选择查看方式，可在看到PDF预览
 Latex-VSCode\8.png
