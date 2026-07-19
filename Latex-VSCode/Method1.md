@@ -1,0 +1,107 @@
+## 下载texlive
+
+打开 [https://www.tug.org/texlive/](https://www.tug.org/texlive/)
+
+![1.png](1.png)
+
+点击 on DVD->downloading the ISO image and burning your own DVD->download from a nearby CTAN mirror->texlive20xx.iso(版本会随年份更新)，开始下载
+
+![2.png](2.png)
+
+![3.png](3.png)
+
+![4.png](4.png)
+
+或通过清华镜像源下载：[https://mirrors.tuna.tsinghua.edu.cn/](https://mirrors.tuna.tsinghua.edu.cn/)
+
+点击 获取下载链接->应用软件->Tex排版系统->texlive20xx，开始下载
+
+![5.png](5.png)
+
+![6.png](6.png)
+
+![7.png](7.png)
+
+## 安装
+
+下载后解压(路径不能有中文)，右击install-tl-windows.bat(批处理文件)以管理员身份运行，若报错，右击texlive20xx.iso(光盘映像文件)装载，装载后在此电脑打开，右击install-tl-windows.bat(批处理文件)以管理员身份运行，会出现两个窗口，其中黑色窗口在安装完成前不要关闭！
+
+![11.png](11.png)
+
+修改下载路径，可勾选给所有用户安装，点击advance进行其他设置，建议取消勾选安装前端(使用VSCode)，点击定制，只勾选自己需要的语言，设置完成后安装，安装时间一般较长(约40分钟)需耐心等待
+
+![9.png](9.png)
+
+![10.png](10.png)
+
+出现Welcome to Tex Live且关闭按键亮起即安装完成
+
+![12.png](12.png)
+
+可在Windows终端输入 `tex -v` 来检查，输出版本号则成功
+
+## 配置VS Code
+
+在vscode下载LaTeX Workshop扩展，随便打开一个 `.tex` 文件(本文件夹给了一个 `1.tex`)，左侧出现TEX扩展图标，点击图标，按F1，点击"首选项：打开工作区设置(JSON)/Preferences: Open Workspace Settings(JSON)"，会打开一个 `settings.json`，将本文件夹中 `114514.json` 文件的内容并复制黏贴(覆盖即可)到 `settings.json` 并保存，重启VSCode
+
+## 使用方法
+
+打开tex文件，在Build LaTeX project中选择编译方式并点击，再在View LaTeX PDF中选择查看方式，可在看到PDF预览
+
+![8.png](8.png)
+
+### 1. Navigate, select, and edit（导航、选择与编辑）
+
+**SyncTeX from cursor（正向同步）：**
+光标停在 .tex 某处代码时，点一下这个，PDF 预览界面会自动滚屏并高亮对应的段落。配合双击 PDF 反向跳转，两边互通。
+
+**Navigate to matching `\begin{}`/`\end{}`（跳转到匹配的头尾）：**
+当在写一个很长的表格或者复杂的公式环境时，点它一下，光标就能在对应的开头和结尾 `\begin` 和 `\end{}` 之间闪现。
+
+**Select the current environment content（选择当前环境的内容）：**
+比如你想把整个大块内容（`\begin{}` 到 `\end{}` 之间）全部选中，点它一下，它会自动精准选中里面的所有内容，不需要用鼠标去拖拽选中。
+
+**Select the current environment name（选择当前环境的名称）：**
+选中你当前光标所在环境的名称本身（也就是 `\begin{...}` 和 `\end{...}` 括号里面的内容），可同时更改头尾。
+
+**Close current environment（关闭当前环境）：**
+自动补全结尾的 `\end{...}`。
+
+**Surround selection with `\begin{}...\end{}`（用环境包裹选中内容）：**
+事先写好了一段字，想把它变成一个公式或者列表，选中这段字，点它，它会自动在头尾帮你加上 `\begin{...}` 和 `\end{...}`。
+
+**Insert !TeX root magic comment（插入 !TeX 根文件魔法注释）：**
+用来告诉 VS Code 哪一个是主文件（Mian File），解决多文件排版。写大报告或大论文时，把引言、实验、结论分别写在 `intro.tex`、`experiment.tex`、`conclusion.tex` 里，然后用一个 `main.tex` 去汇总它们。当单独打开 `experiment.tex` 修改代码并按下保存时，VS Code 会编译这个单独的小文件，然后因为找不到头尾而报错。解决办法：在小文件的最顶部点一下这个功能，它会自动插入一行注释（类似 `% !TEX root = ./main.tex`），无论你正在修改哪一个小模块，只要按下保存，VS Code 都会自动编译总的 `main.tex`。
+
+### 2. Miscellaneous（杂项实用工具）
+
+**Open citation browser（打开参考文献浏览器）：**
+点开它，你能一眼看到你在 .bib 文件里存的所有参考文献。写论文要引用时，可以直接在这里搜索并一键插入正文。
+
+**Count words in LaTeX document（统计字数）：**
+写论文或者报告有字数限制时（比如很多期刊限制在 3000 字内），点它一下，它会自动剔除掉排版代码、公式、大段的宏包命令，只统计中文字或英文单词。
+
+**Reveal output folder in OS（在系统里打开输出文件夹）：**
+一键打开保存了 PDF 的文件夹。
+
+### 3. BibTeX actions（参考文献整理）
+
+**Align BibTeX file（对齐文献文件）：**
+自动把所有参考文献的作者、年份、缩进对得整整齐齐。
+
+**Sort BibTeX file（文献排序）：**
+自动把文献按照字母顺序或者年份重新排版，让数据库井井有条。
+
+**Sort and align BibTeX file（排序并对齐 BibTeX 文件）：**
+集成以上两个功能
+
+**Check for unused citations...（检查未使用的引用）：**
+写长篇报告时，可能往文献库里塞了 50 篇论文，但最后正文里只引用了 30 篇。点一下它，它会帮你揪出剩下的 20 篇未引用文献，方便保持论文的精简。
+
+## 可能的问题
+
+若出错，可能是因为没添加环境变量，复制 `texlive/202xx/bin/(win32？)` 文件夹的路径，设置->关于->高级系统设置->高级->环境变量->系统变量->Path->新建，然后将bin/的路径粘贴
+
+## 更新方法
+
+例如已安装texlive2024，要更新至texlive2026，下载 `texlive2026.iso` 并安装，会在 `texlive\` 下形成 `2026\` 和原有的 `2024\`，`\texlive\2024\install-tl-windows.bat` 将 `2024\` 删除，将 `\202xx\bin\` 路径粘贴到环境变量即可
