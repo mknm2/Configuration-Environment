@@ -71,4 +71,4 @@ Check for unused citations...（检查未使用的引用）：
 ==========可能的问题==========
 若出错，可能是因为没添加环境变量，复制texlive/202xx/bin/(win32？)文件夹的路径，设置->关于->高级系统设置->高级->环境变量->系统变量->Path->新建，然后将bin/的路径粘贴
 ==========更新方法==========
-例如已安装texlive2024，要更新至texlive2026，下载texlive2026.iso并安装，会在texlive\下形成2026\(以及原有的2024\)，用 \texlive\2024\install-tl-windows.bat 将2024\删除，将\2026\bin\路径粘贴到环境变量即可
+例如已安装texlive2024，要更新至texlive2026，下载texlive2026.iso并安装，会在texlive\下形成2026\(以及原有的2024\)，以管理员身份运行 \texlive\2024\install-tl-windows.bat 将2024\删除，将\2026\bin\路径粘贴到环境变量即可
