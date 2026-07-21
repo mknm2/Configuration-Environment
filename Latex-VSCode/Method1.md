@@ -42,7 +42,7 @@
 
 ## 配置VS Code
 
-在vscode下载LaTeX Workshop扩展，随便打开一个 `.tex` 文件(本文件夹给了一个 `1.tex`)，左侧出现TEX扩展图标，点击图标，按F1，点击"首选项：打开工作区设置(JSON)/Preferences: Open Workspace Settings(JSON)"，会打开一个 `settings.json`，将本文件夹中 `114514.json` 文件的内容并复制黏贴(覆盖即可)到 `settings.json` 并保存，重启VSCode
+在vscode下载LaTeX Workshop扩展，随便打开一个 `.tex` 文件(本文件夹给了一个 `114514.tex`)，左侧出现TEX扩展图标，点击图标，按F1，点击"首选项：打开工作区设置(JSON)/Preferences: Open Workspace Settings(JSON)"，会打开一个 `settings.json`，将本文件夹中 `114514.json` 文件的内容并复制黏贴(覆盖即可)到 `settings.json` 并保存，重启VSCode
 
 ## 使用方法
 
@@ -104,4 +104,4 @@
 
 ## 更新方法
 
-例如已安装texlive2024，要更新至texlive2026，下载 `texlive2026.iso` 并安装，会在 `texlive\` 下形成 `2026\` 和原有的 `2024\`，`\texlive\2024\install-tl-windows.bat` 将 `2024\` 删除，将 `\202xx\bin\` 路径粘贴到环境变量即可
+例如已安装texlive2024，要更新至texlive2026，下载 `texlive2026.iso` 并安装，会在 `texlive\` 下形成 `2026\` （以及原有的 `2024\`），以管理员身份运行 `\texlive\2024\install-tl-windows.bat` 将 `2024\` 删除，将 `\2026\bin\` 路径粘贴到环境变量即可
